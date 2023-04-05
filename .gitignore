@@ -1,6 +1,7 @@
 *.layout
 *.depend
 *.layout.bak
+*.cbp
 *.cbp.bak
 *.o
 *.obj
