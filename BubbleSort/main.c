@@ -1,16 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-
-void swap(int *xp, int *yp)
+void swap(int* a, int* b)
 {
-    int temp = *xp;
-    *xp = *yp;
-    *yp = temp;
+    int temp = *a;
+    *a = *b;
+    *b = temp;
 }
 
-
-void bubbleSort(int arr[], int n)
+void bubble_sort(int arr[], int n)
 {
     for (int i = 0; i < n - 1; i++)
     {
@@ -35,7 +33,7 @@ int main()
         printf("%d ", arr[i]);
     }
 
-    bubbleSort(arr, n);
+    bubble_sort(arr, n);
 
     printf("\nArray ordenado: ");
     for (int i = 0; i < n; i++)

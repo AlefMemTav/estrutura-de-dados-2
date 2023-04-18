@@ -8,24 +8,9 @@ void swap(int* a, int* b)
     *b = temp;
 }
 
-void quick_sort(int array[], int start, int end)
+int partition(int array[], int start, int end)
 {
-    if (start < end)
-    {
-        int pivot = choose_pivot(array, start, end);
-        pivot = partition(array, start, end, pivot);
-        quick_sort(array, start, pivot - 1);
-        quick_sort(array, pivot + 1, end);
-    }
-}
-
-int choose_pivot(int array[], int start, int end)
-{
-    return array[start];
-}
-
-int partition(int array[], int start, int end, int pivot)
-{
+    int pivot = array[start];
     int left = start + 1;
     int right = end;
 
@@ -51,26 +36,45 @@ int partition(int array[], int start, int end, int pivot)
     return right;
 }
 
+int quick_select(int array[], int start, int end, int k)
+{
+    if (start == end)
+    {
+        return array[start];
+    }
+
+    int pivot = partition(array, start, end);
+
+    if (k == pivot)
+    {
+        return array[pivot];
+    }
+    else if (k < pivot)
+    {
+        return quick_select(array, start, pivot - 1, k);
+    }
+    else
+    {
+        return quick_select(array, pivot + 1, end, k);
+    }
+}
+
 int main()
 {
     int array[] = {4, 2, 1, 5, 3};
     int size = sizeof(array) / sizeof(array[0]);
+    int k = 2; // posição do elemento desejado
 
-    printf("Array antes da ordenacao:\n");
+    printf("Array: ");
     for (int i = 0; i < size; i++)
     {
         printf("%d ", array[i]);
     }
     printf("\n");
 
-    int new_size = size - 1;
+    int element = quick_select(array, 0, size - 1, k);
 
-    quick_sort(array, 0, new_size);
+    printf("Elemento na posicao %d: %d\n", k, element);
 
-    printf("Array depois da ordenacao:\n");
-    for (int i = 0; i < size; i++)
-    {
-        printf("%d ", array[i]);
-    }
-    printf("\n");
+    return 0;
 }
