@@ -1,6 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+/**
+ * The function swaps the values of two integers.
+ *
+ * @param a Pointer to the first integer to be swapped.
+ * @param b Pointer to the second integer to be swapped.
+ */
 void swap(int* a, int* b)
 {
     int temp = *a;
@@ -8,6 +14,14 @@ void swap(int* a, int* b)
     *b = temp;
 }
 
+/**
+ * The function partitions the array based on a pivot value and returns the index of the pivot.
+ *
+ * @param array The array to be partitioned.
+ * @param start The starting index of the array.
+ * @param end The ending index of the array.
+ * @return The index of the pivot.
+ */
 int partition(int array[], int start, int end)
 {
     int pivot = array[start];
@@ -36,6 +50,15 @@ int partition(int array[], int start, int end)
     return right;
 }
 
+/**
+ * The function returns the kth smallest element in the array.
+ *
+ * @param array The array to search for the kth smallest element.
+ * @param start The starting index of the array.
+ * @param end The ending index of the array.
+ * @param k The value of k, representing the position of the element to be found.
+ * @return The kth smallest element in the array.
+ */
 int quick_select(int array[], int start, int end, int k)
 {
     if (start == end)
