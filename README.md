@@ -30,21 +30,29 @@ To run the program, you will need to have a C compiler installed on your machine
 
 1. Clone the repository to your local machine using Git:
 
-`git clone https://github.com/AlefMemTav/estruturas-de-dados-2.git`
+```
+git clone https://github.com/AlefMemTav/estruturas-de-dados-2.git
+```
 
 #### If you want compile an specific code
 
   2. Navigate to the directory of the data structure you want to use:
 
-  `cd estruturas-de-dados-2/LinkedList`
+  ```
+  cd estruturas-de-dados-2/LinkedList
+  ```
 
 3. Compile the code using the C compiler:
 
-`gcc linkedlist.c -o linkedlist`
+```
+gcc linkedlist.c -o linkedlist
+```
 
 4. Run the executable:
 
-`./linkedlist`
+```
+./linkedlist
+```
 
 This will run the program and output the results to the terminal. You can modify the source code to change the input or output as desired.
 
@@ -52,7 +60,9 @@ This will run the program and output the results to the terminal. You can modify
 
 2. Navigate to the project directory:
 
-`cd estruturas-de-dados-2/`
+```
+cd estruturas-de-dados-2/
+```
 
 3. Compile the code:
 
@@ -64,7 +74,7 @@ gcc quick_select.c -o quick_select
 gcc quick_sort.c -o quick_sort
 ```
 
-4. Run an program:
+4. Run a program:
 
 ```
 ./bubble_sort
