@@ -64,14 +64,10 @@ gcc quick_select.c -o quick_select
 gcc quick_sort.c -o quick_sort
 ```
 
-4. Run the program:
+4. Run an program:
 
 ```
 ./bubble_sort
-./hash_table
-./linked_list
-./quick_select
-./quick_sort
 ```
 
 # License
