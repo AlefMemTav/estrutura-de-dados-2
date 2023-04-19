@@ -28,28 +28,32 @@ void swap(int* a, int* b)
  */
 int partition(int array[], int start, int end, int pivot)
 {
-    int left = start + 1;
-    int right = end;
+    int left = start + 1; // Left index starts at the element immediately following the pivot
+    int right = end; // Right index starts at the last element of the partition
 
+    // Loop through the array while left is less than or equal to right
     while (left <= right)
     {
+        // Move left to the right while the value is less than the pivot
         while (left <= end && array[left] < pivot)
         {
             left++;
         }
-
+        // Move right to the left while the value is greater than the pivot
         while (right >= start && array[right] > pivot)
         {
             right--;
         }
-
+        // Swap values if left is less than the right
         if (left < right)
         {
             swap(&array[left], &array[right]);
         }
     }
-
+    // Swap the pivot value with the value at the right
     swap(&array[start], &array[right]);
+
+    // Return the index of the pivot value
     return right;
 }
 

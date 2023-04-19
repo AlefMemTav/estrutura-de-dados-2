@@ -1,6 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+/**
+ * The function swaps the values of two integers.
+ *
+ * @param a Pointer to the first integer to be swapped.
+ * @param b Pointer to the second integer to be swapped.
+ */
 void swap(int* a, int* b)
 {
     int temp = *a;
