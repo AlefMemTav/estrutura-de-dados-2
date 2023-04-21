@@ -85,20 +85,21 @@ int quick_select(int array[], int start, int end, int k)
     {
         return array[start];
     }
+    int pivot = choose_pivot(array, start, end);
 
-    int pivot = partition(array, start, end);
+    int pivot_index = partition(array, start, end, pivot);
 
-    if (k == pivot)
+    if (k == pivot_index)
     {
-        return array[pivot];
+        return array[pivot_index];
     }
-    else if (k < pivot)
+    else if (k < pivot_index)
     {
-        return quick_select(array, start, pivot - 1, k);
+        return quick_select(array, start, pivot_index - 1, k);
     }
     else
     {
-        return quick_select(array, pivot + 1, end, k);
+        return quick_select(array, pivot_index + 1, end, k);
     }
 }
 

@@ -1,7 +1,7 @@
 <h1 align="center">📄 README</h1>
 
 # Data structures 2
-This repository contains implementations of various data structures in different programming languages. The following data structures are currently available:
+This repository contains implementations of various data structures in the C programming language. The following data structures are currently available:
 - Bubble Sort
 - Hash Table
 - Linked List
