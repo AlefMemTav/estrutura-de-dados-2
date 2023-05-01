@@ -208,9 +208,26 @@ void menu()
     while(op != 0);
 }
 
+void clear_memory()
+{
+    int i;
+    for(i = 0; i < M; i++)
+    {
+        Node *node = hash_table[i]->head;
+        while (node != NULL)
+        {
+            Node *temp = node;
+            node = node->next;
+            free(temp);
+        }
+        free(hash_table[i]);
+    }
+}
+
+
 int main()
 {
     menu();
-
+    clear_memory();
     return 0;
 }
