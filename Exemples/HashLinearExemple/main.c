@@ -3,20 +3,29 @@
 
 #define M 19
 
+/**
+* The type Person
+*/
 typedef struct
 {
     int matricula; // key of hash table
-    char nome[50];
+    char nome[50]; // name of the person
 } Pessoa;
 
-Pessoa hash_table[M];
+/**
+* The hash table
+*/
+Pessoa hash_table[M]; // a hash table of Person
 
+/**
+* Initializes the hash table keys with -1
+*/
 void initialize_table()
 {
     int i= 0;
     for(i; i < M; i++)
     {
-        hash_table[i].matricula = -1;
+        hash_table[i].matricula = -1; // initializes the hash table with -1
     }
 }
 
@@ -25,18 +34,24 @@ int espalhamento(int key)
     return key%M;
 }
 
+/**
+* Creates a new person
+*/
 Pessoa create_pessoa()
 {
     Pessoa p;
     printf("Matricula \t");
     scanf("%d", &p.matricula);
-    scanf("%c");
+    fflush(stdin); // clear keyboard buffer
     printf("Nome \t");
     fgets(p.nome, 50, stdin);
     return p;
 }
 
-void insert_table()
+/**
+* Inserts a person on the hash table
+*/
+void insert_pessoa()
 {
     Pessoa p = create_pessoa();
     int i = espalhamento(p.matricula);
@@ -47,6 +62,9 @@ void insert_table()
     hash_table[i] = p;
 }
 
+/**
+* Searches for a person
+*/
 Pessoa* search_pessoa(int key)
 {
     int i = espalhamento(key);
@@ -64,6 +82,9 @@ Pessoa* search_pessoa(int key)
     return NULL;
 }
 
+/**
+* Prints the hash table with all key-values
+*/
 void print_table()
 {
     int i = 0;
@@ -71,7 +92,7 @@ void print_table()
     {
         if(hash_table[i].matricula != -1)
         {
-            printf("\n%2d = %3d \t %s", i, hash_table[i].matricula, hash_table[i].nome);
+            printf("%1d = %3d \t %s", i, hash_table[i].matricula, hash_table[i].nome);
         }
         else
         {
@@ -82,16 +103,7 @@ void print_table()
 
 void clear()
 {
-    system("cls || clear");
-}
-
-void limpa_buffer()
-{
-    int c = 0;
-    while ((c = getchar()) != '\n' && c != EOF)
-    {
-        // Lê e descarta caracteres do buffer até encontrar uma nova linha ou o fim do arquivo
-    }
+    system("cls || clear"); // clears the user's screen.
 }
 
 void menu()
@@ -101,17 +113,18 @@ void menu()
     initialize_table();
     do
     {
+        clear();
         printf("1 - Inserir \t 2 - Buscar \t 3 - Imprimir \t 0 - Sair \n");
         scanf("%d", &op);
+        clear();
         switch(op)
         {
         case 0:
             printf("Finalizado.\n");
             break;
         case 1:
-            insert_table();
-            getchar();
-            clear();
+            insert_pessoa(); // on the hash table
+            getchar(); // waits for a character from the user.
             break;
         case 2:
             printf("Chave \t");
@@ -119,24 +132,21 @@ void menu()
             p = search_pessoa(key);
             if(p)
             {
-                printf("%d \t %s \n", p->matricula, p->nome);
+                printf("%d \t %s", p->matricula, p->nome);
             }
             else
             {
                 printf("Nenhuma pessoa achada.\n");
             }
-            limpa_buffer();
-            getchar();
-            clear();
+            fflush(stdin); // clear keyboard buffer
+            getchar(); // waits for a character from the user
             break;
         case 3:
             print_table();
-            limpa_buffer();
-            getchar();
-            clear();
+            fflush(stdin); // clear keyboard buffer
+            getchar(); // waits for a character from the user
             break;
         default:
-            clear();
             break;
         }
     }
