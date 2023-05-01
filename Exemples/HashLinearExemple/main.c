@@ -9,13 +9,13 @@
 typedef struct
 {
     int matricula; // key of hash table
-    char nome[50]; // name of the person
+    char nome[50]; // name
 } Pessoa;
 
 /**
-* The hash table
+* The hash table of Person
 */
-Pessoa hash_table[M]; // a hash table of Person
+Pessoa hash_table[M];
 
 /**
 * Initializes the hash table keys with -1
