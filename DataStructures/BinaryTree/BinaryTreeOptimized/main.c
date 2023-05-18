@@ -8,11 +8,6 @@ typedef struct Node
     struct Node* right;
 } Node;
 
-typedef struct
-{
-    Node* root;
-} Btree;
-
 Node* createNode(int value)
 {
     Node* newNode = (Node*)malloc(sizeof(Node));
@@ -22,62 +17,25 @@ Node* createNode(int value)
     return newNode;
 }
 
-void insertLeft(Node* node, int value)
+Node* insert(Node* root, int value)
 {
-    if(node->left == NULL)
+    if(root == NULL)
     {
-        node->left = createNode(value);
+        return root = createNode(value);
     }
     else
     {
-        if(value < node->left->value)
+        if(value < root->value)
         {
-            insertLeft(node->left, value);
+            root->left = insert(root->left, value);
         }
-        if(value > node->left->value)
+        if(value > root->value)
         {
-            insertRight(node->left, value);
+            root->right = insert(root->right, value);
         }
+        return root;
     }
-}
-
-void insertRight(Node* node, int value)
-{
-    if(node->right == NULL)
-    {
-        node->right = createNode(value);
-    }
-    else
-    {
-        if(value > node->right->value)
-        {
-            insertRight(node->right, value);
-        }
-        if(value < node->right->value)
-        {
-            insertLeft(node->right, value);
-        }
-
-    }
-}
-
-void insert(Btree* tree, int value)
-{
-    if(tree->root == NULL)
-    {
-        tree->root = createNode(value);
-    }
-    else
-    {
-        if(value < tree->root->value)
-        {
-            insertLeft(tree->root, value);
-        }
-        if(value > tree->root->value)
-        {
-            insertRight(tree->root, value);
-        }
-    }
+    return NULL;
 }
 
 void printBtree(Node* root)
@@ -93,10 +51,7 @@ void printBtree(Node* root)
 int main()
 {
     int op, valor;
-    Btree bt;
     Node* root = NULL;
-
-    bt.root = NULL;
 
     do
     {
@@ -111,11 +66,11 @@ int main()
         case 1:
             printf("Digite um valor: ");
             scanf("%d", &valor);
-            insert(&bt, valor);
+            root = insert(root, valor);
             break;
         case 2:
             printf("\t Arvore binaria:\n");
-            printBtree(bt.root);
+            printBtree(root);
             break;
         default:
             printf("Invalido\n");
