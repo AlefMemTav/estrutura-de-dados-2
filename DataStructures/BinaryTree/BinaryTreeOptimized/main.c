@@ -48,6 +48,19 @@ void printBtree(Node* root)
     }
 }
 
+int treeSize(Node* root)
+{
+    if(root == NULL)
+    {
+        return 0;
+    }
+    else
+    {
+
+        return 1 + treeSize(root->left) + treeSize(root->right);
+    }
+}
+
 int main()
 {
     int op, valor;
@@ -71,10 +84,10 @@ int main()
         case 2:
             printf("\t Arvore binaria:\n");
             printBtree(root);
+            printf("\n\t Tamanho da arvore: %d\n", treeSize(root));
             break;
         default:
             printf("Invalido\n");
-
         }
     }
     while(op != 0);
